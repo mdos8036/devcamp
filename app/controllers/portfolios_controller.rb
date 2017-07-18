@@ -1,4 +1,7 @@
 class PortfoliosController < ApplicationController
+  before_action :set_portfolio_item, only: [:edit, :update, :show, :destroy]
+  layout "portfolio"
+  
   def index
     @portfolio_items = Portfolio.all
   end
@@ -12,7 +15,7 @@ class PortfoliosController < ApplicationController
 
     respond_to do |format|
       if @portfolio_item.save
-        format.html { redirect_to portfolios_path, notice: 'Your portfolio item is now live.' }
+        format.html { redirect_to portfolios_path, notice: 'Your portfolio item is now alive.' }
       else
         format.html { render :new }
       end
